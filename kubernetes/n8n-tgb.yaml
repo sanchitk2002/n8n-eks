@@ -1,0 +1,10 @@
+apiVersion: elbv2.k8s.aws/v1beta1
+kind: TargetGroupBinding
+metadata:
+  name: n8n-tgb
+  namespace: n8n
+spec:
+  serviceRef:
+    name: n8n
+    port: 5678
+  targetGroupARN: arn:aws:elasticloadbalancing:ap-south-1:795722550498:targetgroup/n8n-tg/7dd75eb924d12423

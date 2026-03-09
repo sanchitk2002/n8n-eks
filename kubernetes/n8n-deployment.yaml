@@ -34,11 +34,20 @@ spec:
             - name: DB_TYPE
               value: postgresdb
             - name: DB_POSTGRESDB_HOST
-              value: postgres-service.n8n.svc.cluster.local
+              valueFrom:
+                configMapKeyRef:
+                  name: rds-db-config
+                  key: RDS_HOST
             - name: DB_POSTGRESDB_PORT
-              value: "5432"
+              valueFrom:
+                configMapKeyRef:
+                  name: rds-db-config
+                  key: RDS_PORT
             - name: DB_POSTGRESDB_DATABASE
-              value: n8n
+              valueFrom:
+                configMapKeyRef:
+                  name: rds-db-config
+                  key: RDS_DATABASE
             - name: DB_POSTGRESDB_USER
               valueFrom:
                 secretKeyRef:
@@ -50,7 +59,11 @@ spec:
                   name: postgres-secret
                   key: POSTGRES_NON_ROOT_PASSWORD
             - name: N8N_PROTOCOL
-              value: http
+              value: https
+            - name: N8N_HOST
+              value: n8nv2.myoperator.dev
+            - name: WEBHOOK_URL
+              value: https://n8nv2.myoperator.dev/
             - name: N8N_PORT
               value: "5678"
           image: n8nio/n8n
@@ -70,9 +83,3 @@ spec:
         - name: n8n-claim0
           persistentVolumeClaim:
             claimName: n8n-claim0
-        - name: n8n-secret
-          secret:
-            secretName: n8n-secret
-        - name: postgres-secret
-          secret:
-            secretName: postgres-secret

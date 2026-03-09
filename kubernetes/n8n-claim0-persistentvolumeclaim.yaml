@@ -1,3 +1,5 @@
+# Uses EFS via n8n-efs StorageClass (ReadWriteMany for multi-AZ/shared storage).
+# Requires: n8n-storageclass.yaml applied and fileSystemId set to your EFS ID.
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -7,7 +9,8 @@ metadata:
   namespace: n8n
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
+  storageClassName: n8n-efs
   resources:
     requests:
       storage: 2Gi

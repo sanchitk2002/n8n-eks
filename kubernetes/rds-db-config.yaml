@@ -1,0 +1,13 @@
+# ConfigMap for RDS PostgreSQL connection (non-sensitive).
+# Replace values with your RDS instance endpoint and database name.
+# Credentials stay in postgres-secret (POSTGRES_NON_ROOT_USER, POSTGRES_NON_ROOT_PASSWORD).
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rds-db-config
+  namespace: n8n
+data:
+  RDS_HOST: "chat.cluster-cwytract4huq.ap-south-1.rds.amazonaws.com"
+  RDS_PORT: "5432"
+  RDS_DATABASE: "n8n-dev"

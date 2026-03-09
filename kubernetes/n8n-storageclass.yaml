@@ -1,0 +1,16 @@
+# StorageClass for n8n persistent data (EFS).
+# Prerequisites: EFS CSI driver installed on the cluster (efs.csi.aws.com).
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: n8n-efs
+provisioner: efs.csi.aws.com
+parameters:
+  provisioningMode: efs-ap
+  fileSystemId: fs-03bc12f6214cadbbe
+  directoryPerms: "700"
+  gidRangeStart: "1000"
+  gidRangeEnd: "2000"
+  basePath: "/n8n-eks"
+  tags: Name=n8n-efs
