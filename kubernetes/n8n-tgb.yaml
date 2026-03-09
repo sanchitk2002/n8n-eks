@@ -7,4 +7,4 @@ spec:
   serviceRef:
     name: n8n
     port: 5678
-  targetGroupARN: arn:aws:elasticloadbalancing:ap-south-1:795722550498:targetgroup/n8n-tg/7dd75eb924d12423
+  targetGroupARN: arn:aws:elasticloadbalancing:ap-south-1:xxxxxxxxx:targetgroup/n8n-tg/xxxxxxxx
