@@ -8,6 +8,6 @@ metadata:
   name: rds-db-config
   namespace: n8n
 data:
-  RDS_HOST: "chat.cluster-cwytract4huq.ap-south-1.rds.amazonaws.com"
+  RDS_HOST: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   RDS_PORT: "5432"
   RDS_DATABASE: "n8n-dev"
